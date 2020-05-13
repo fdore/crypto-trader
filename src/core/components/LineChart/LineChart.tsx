@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { SvgContainer } from "./LineChart.styled";
+import { SvgContainer, SvgPath } from "./LineChart.styled";
 import Palette from "theme/style";
 
 interface Props {
@@ -33,7 +33,7 @@ const LineChart: FC<Props> = (props) => {
 
   return (
     <SvgContainer viewBox={`0 0 ${width} ${height}`}>
-      <path d={pathD} style={{ stroke: Palette.LightGray }} />
+      <SvgPath d={pathD} />
     </SvgContainer>
   );
 };

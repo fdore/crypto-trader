@@ -15,3 +15,13 @@ export const getCandles = createSelector(candlesSelector, (candles) =>
     (currencyPair, timeframe) => `${currencyPair}:${timeframe}`
   )
 );
+
+export const getClosePrices = createSelector(candlesSelector, (candles) =>
+  memoize(
+    (currencyPair: string, timeframe: string) =>
+      (candles[getLookupKey(currencyPair, timeframe)] || DEFAULT_CANDLES).map(
+        (c) => c.close
+      ),
+    (currencyPair, timeframe) => `${currencyPair}:${timeframe}`
+  )
+);

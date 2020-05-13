@@ -1,4 +1,8 @@
 import styled from "styled-components";
+import {
+  SvgContainer,
+  SvgPath,
+} from "core/components/LineChart/LineChart.styled";
 import Palette from "theme/style";
 
 export const Container = styled.div<{
@@ -16,9 +20,23 @@ export const Container = styled.div<{
   padding: 5px 10px;
   border: 1px solid
     ${({ isActive }) => (isActive ? Palette.Orange : Palette.Border)};
+  position: relative;
 
   &:hover {
     background-color: #2d3436;
+  }
+
+  ${SvgContainer} {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    opacity: 0.6;
+    z-index: -1;
+    ${SvgPath} {
+      stroke: ${Palette.DarkGray};
+    }
   }
 `;
 

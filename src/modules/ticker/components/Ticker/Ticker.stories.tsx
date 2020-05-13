@@ -31,6 +31,7 @@ export const Default = () => {
       lastPrice={7540.45}
       dailyChangeRelative={-3.5}
       dailyChange={-210.3}
+      prices={[7530.25, 7542.1, 7741.6, 7540.45, 7200.1, 7500.2]}
     />
   );
 };

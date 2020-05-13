@@ -9,6 +9,7 @@ import {
 import UpdateHighlight from "core/components/UpdateHighlight/UpdateHighlight";
 import TrendIndicator from "core/components/TrendIndicator";
 import { formatCurrencyPair, formatPrice } from "modules/reference-data/utils";
+import LineChart from "core/components/LineChart";
 
 export interface StateProps {
   currencyPair: string;
@@ -16,6 +17,7 @@ export interface StateProps {
   dailyChange: number;
   dailyChangeRelative: number;
   isActive?: boolean;
+  prices: number[];
 }
 
 export interface DispatchProps {
@@ -32,6 +34,7 @@ const Ticker: FC<Props> = (props) => {
     dailyChangeRelative,
     onClick,
     isActive,
+    prices,
   } = props;
   const isPositiveChange = dailyChange > 0;
   const percentChange = dailyChangeRelative
@@ -39,6 +42,7 @@ const Ticker: FC<Props> = (props) => {
     : undefined;
   return (
     <Container onClick={onClick} isActive={!!isActive}>
+      <LineChart values={prices} />
       <CurrencyPair>{formatCurrencyPair(currencyPair)}</CurrencyPair>
       <Price>
         <UpdateHighlight value={formatPrice(lastPrice)} effect={"zoom"} />
